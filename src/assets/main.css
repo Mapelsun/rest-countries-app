@@ -21,13 +21,19 @@
   --color-elements: var(--color-elements-light);
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme='dark'] {
+    --color-background: var(--color-background-dark);
+    --color-text: var(--color-text-dark);
+    --color-elements: var(--color-elements-dark);
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--color-background-dark);
     --color-text: var(--color-text-dark);
     --color-elements: var(--color-elements-dark);
   }
-}
+} */
 
 body {
   min-height: 100vh;

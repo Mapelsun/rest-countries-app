@@ -28,18 +28,24 @@ watch(modeVal, (newVal) => {
     document.documentElement.setAttribute('data-theme', 'dark')
     localStorage.theme = 'dark'
   }
-}, {immediate: true})
+}, { immediate: true })
 
 onMounted(() => checkDarkMode())
 </script>
 
 
 <template>
-  <header class="flex justify-between items-center p-4 shadow-sm">
-    <h3 class="font-bold">Where in the world?</h3>
-    <div class="flex items-center gap-2">
-      <img src="@/assets/icons/moon-outline.svg" alt="icon-moon" class="w-4 cursor-pointer" @click="toggleDarkMode" />
-      <p>{{ modeVal === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
+  <header class="p-4 shadow-sm">
+    <div class="flex justify-between items-center max-w-screen-xl mx-auto">
+      <h3 class="font-bold text-base">Where in the world?</h3>
+      <div class="flex items-center gap-2">
+        <div @click="toggleDarkMode">
+          <img v-if="modeVal.value === 'light'" src="@/assets/icons/moon-outline.svg" alt="icon-moon"
+            class="w-4 cursor-pointer" />
+          <img v-else src="@/assets/icons/moon-filled.svg" alt="icon-moon" class="w-4 cursor-pointer" />
+        </div>
+        <p>{{ modeVal === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
+      </div>
     </div>
   </header>
 </template>

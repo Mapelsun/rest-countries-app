@@ -5,7 +5,12 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        // responsive column grid
+        'auto': 'repeat(auto-fit, minmax(17rem, 1fr))',
+      }
+    },
   },
   plugins: [],
 }

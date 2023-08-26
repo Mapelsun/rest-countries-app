@@ -35,7 +35,8 @@ onMounted(() => checkDarkMode())
 
 
 <template>
-  <header class="p-4 shadow-sm">
+  <header class="p-4 shadow-sm sticky top-0"
+    :class="modeVal === 'dark' ? 'bg-[--color-background-light]' : 'bg-[--color-background-dark]'">
     <div class="flex justify-between items-center max-w-screen-xl mx-auto">
       <h3 class="font-bold text-base">Where in the world?</h3>
       <div class="flex items-center gap-2">

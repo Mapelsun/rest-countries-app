@@ -15,7 +15,7 @@ const getCountries = async () => {
         name: country.name.common,
         population: country.population,
         region: country.region,
-        capital: country.capital
+        capital: country.capital[0]
       }
     })
   } catch (error) {
@@ -30,7 +30,7 @@ onMounted(() => {
 
 
 <template>
-  <section>
+  <section class="max-w-screen-xl mx-auto p-4 flex flex-col gap-10 sm:grid sm:grid-cols-auto">
     <CountryCard :countries="defaultCountries" />
   </section>
 </template>

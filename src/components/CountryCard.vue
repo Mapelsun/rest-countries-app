@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <div v-for="{ flag, flagAlt, name, population, region, capital } in countries" :key="name"
-    class="flex flex-col rounded shadow-lg overflow-hidden">
+    class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer">
     <img :src="flag" :alt="flagAlt" class="h-48 w-full object-cover" />
     <div class="px-6 pt-6 pb-10">
       <h4 class="font-bold mb-3 text-xl">{{ name }}</h4>

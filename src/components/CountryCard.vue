@@ -1,11 +1,18 @@
 <script setup>
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const props = defineProps({
   countries: Array,
 })
+
+const viewCountryDetails = (name) => {
+  console.log('Country Name:', name)
+}
 </script>
 
 <template>
-  <div v-for="{ flag, flagAlt, name, population, region, capital } in countries" :key="name"
+  <div @click="viewCountryDetails(name)" v-for="{ flag, flagAlt, name, population, region, capital } in countries" :key="name"
     class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer">
     <img :src="flag" :alt="flagAlt" class="h-48 w-full object-cover" />
     <div class="px-6 pt-6 pb-10">

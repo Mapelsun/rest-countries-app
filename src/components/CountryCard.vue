@@ -5,14 +5,10 @@ const router = useRouter()
 const props = defineProps({
   country: Object
 })
-
-const viewCountryDetails = (name) => {
-  console.log('Country Name:', name)
-}
 </script>
 
 <template>
-  <div @click="viewCountryDetails(country.name)"
+  <div @click="router.push(`/countries/${name}`)"
     class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer">
     <img :src="country.flag" :alt="country.flagAlt" class="h-48 w-full object-cover" />
     <div class="px-6 pt-6 pb-10">

@@ -1,4 +1,5 @@
 <script setup>
+import Container from '@/components/Container.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import api from '@/utils/api-services.js';
 import { ref, onMounted, watch } from 'vue'
@@ -30,7 +31,9 @@ onMounted(() => {
 
 
 <template>
-  <section class="max-w-screen-xl mx-auto p-4 flex flex-col gap-10 sm:grid sm:grid-cols-auto">
-    <CountryCard :countries="defaultCountries" />
-  </section>
+  <container>
+    <section class="flex flex-col gap-10 sm:grid sm:grid-cols-auto">
+      <CountryCard :countries="defaultCountries" />
+    </section>
+  </container>
 </template>

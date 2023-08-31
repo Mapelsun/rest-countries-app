@@ -33,7 +33,7 @@ onMounted(() => {
 <template>
   <container>
     <section class="flex flex-col gap-10 sm:grid sm:grid-cols-auto">
-      <CountryCard :countries="defaultCountries" />
+      <CountryCard :country="country" v-for="country in defaultCountries" :key="country.name" />
     </section>
   </container>
 </template>

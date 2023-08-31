@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 const modeVal = ref(localStorage.getItem('theme') || 'light')
+import Container from '@/components/Container.vue'
 
 const checkDarkMode = () => {
   if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -35,18 +36,20 @@ onMounted(() => checkDarkMode())
 
 
 <template>
-  <header class="p-4 shadow-sm sticky top-0"
+  <header class="shadow-sm sticky top-0"
     :class="modeVal === 'dark' ? 'bg-[--color-background-light]' : 'bg-[--color-background-dark]'">
-    <div class="flex justify-between items-center max-w-screen-xl mx-auto">
-      <h3 class="font-bold text-base">Where in the world?</h3>
-      <div class="flex items-center gap-2">
-        <div @click="toggleDarkMode">
-          <img v-if="modeVal.value === 'light'" src="@/assets/icons/moon-outline.svg" alt="icon-moon"
-            class="w-4 cursor-pointer" />
-          <img v-else src="@/assets/icons/moon-filled.svg" alt="icon-moon" class="w-4 cursor-pointer" />
+    <container>
+      <div class="flex justify-between items-center">
+        <h3 class="font-bold text-base">Where in the world?</h3>
+        <div class="flex items-center gap-2">
+          <div @click="toggleDarkMode">
+            <img v-if="modeVal.value === 'light'" src="@/assets/icons/moon-outline.svg" alt="icon-moon"
+              class="w-4 cursor-pointer" />
+            <img v-else src="@/assets/icons/moon-filled.svg" alt="icon-moon" class="w-4 cursor-pointer" />
+          </div>
+          <p>{{ modeVal === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
         </div>
-        <p>{{ modeVal === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
       </div>
-    </div>
+    </container>
   </header>
 </template>

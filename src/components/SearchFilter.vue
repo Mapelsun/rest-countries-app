@@ -5,7 +5,7 @@ import FilterDropDown from '@/components/FilterDropDown.vue'
 </script>
 <template>
   <container>
-    <div class="block sm:flex sm:justify-between">
+    <div class="flex flex-col gap-14 sm:flex-row sm:justify-between">
       <SearchInput />
       <FilterDropDown />
     </div>

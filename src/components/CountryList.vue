@@ -6,9 +6,15 @@ import { ref, onMounted, watch } from 'vue'
 
 const defaultCountries = ref([])
 
+const getCapital = (country) => {
+  if (!country.capital) return 'N/A'
+  return country.capital[0]
+}
+
 const getCountries = async () => {
   try {
     const { data } = await api.getAllCountries()
+
     defaultCountries.value = data.slice(0, 8).map(country => {
       return {
         flag: country.flags.svg,
@@ -16,9 +22,11 @@ const getCountries = async () => {
         name: country.name.common,
         population: country.population,
         region: country.region,
-        capital: country.capital[0]
+        code: country.cca2,
+        capital: getCapital(country)
       }
     })
+
   } catch (error) {
     console.log(error)
   }

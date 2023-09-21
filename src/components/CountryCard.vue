@@ -1,5 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
+import { convertToLowerCase } from '@/utils/helpers.js'
 const router = useRouter()
 
 const props = defineProps({
@@ -8,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div @click="router.push(`/countries/${name}`)"
+  <div @click="router.push(`/country/${convertToLowerCase(country.code)}`)"
     class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer">
     <img :src="country.flag" :alt="country.flagAlt" class="h-48 w-full object-cover" />
     <div class="px-6 pt-6 pb-10">

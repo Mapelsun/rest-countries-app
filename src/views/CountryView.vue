@@ -11,11 +11,11 @@ const route = useRoute()
       @click="router.back()">
       <ArrowLongLeftIcon class="w-4" /><span>Back</span>
     </button>
-    <div>
-      <img class="min-w-full h-48 mb-6" src="" alt="">
-      <div>
+    <div class="grid sm:grid-cols-2 sm:items-center">
+      <img class="w-full max-w-2xl h-60 md:h-full mb-6 sm:mb-0 bg-red-500" src="" alt="">
+      <div class="sm:pl-5 sm:mt-5 md:pl-10 lg:pl-20">
         <h4 class="font-bold mb-4 text-xl">Belgium</h4>
-        <div>
+        <div class="md:flex md:gap-10 lg:gap-16">
           <div class="mb-8">
             <p class="text-cus"><span class="font-semibold">Native Name:</span><span>&nbsp;Belgie</span></p>
             <p class="text-cus"><span class="font-semibold">Population:</span><span>&nbsp;11,319,511</span>

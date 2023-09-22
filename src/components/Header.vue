@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { MoonIcon } from '@heroicons/vue/24/solid'
 const modeVal = ref(localStorage.getItem('theme') || 'light')
 import Container from '@/components/Container.vue'
 
@@ -42,11 +43,7 @@ onMounted(() => checkDarkMode())
       <div class="flex justify-between items-center">
         <h3 class="font-bold text-base">Where in the world?</h3>
         <div class="flex items-center gap-2">
-          <div @click="toggleDarkMode">
-            <img v-if="modeVal.value === 'light'" src="@/assets/icons/moon-outline.svg" alt="icon-moon"
-              class="w-4 cursor-pointer" />
-            <img v-else src="@/assets/icons/moon-filled.svg" alt="icon-moon" class="w-4 cursor-pointer" />
-          </div>
+          <MoonIcon class="w-4 cursor-pointer" @click="toggleDarkMode" />
           <p>{{ modeVal === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
         </div>
       </div>

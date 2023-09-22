@@ -2,14 +2,10 @@
 import Container from '@/components/Container.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import api from '@/utils/api-services.js';
-import { ref, onMounted, watch } from 'vue'
+import { getCapital } from '@/utils/helpers.js'
+import { ref, onMounted } from 'vue'
 
 const defaultCountries = ref([])
-
-const getCapital = (country) => {
-  if (!country.capital) return 'N/A'
-  return country.capital[0]
-}
 
 const getCountries = async () => {
   try {

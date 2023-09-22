@@ -14,9 +14,9 @@ const props = defineProps({
     <img :src="country.flag" :alt="country.flagAlt" class="h-48 w-full object-cover" />
     <div class="px-6 pt-6 pb-10">
       <h4 class="font-bold mb-3 text-xl">{{ country.name }}</h4>
-      <p class="text-base"><span class="font-semibold">Population:</span><span>&nbsp;{{ country.population }}</span></p>
-      <p class="text-base"><span class="font-semibold">Region:</span><span>&nbsp;{{ country.region }}</span></p>
-      <p class="text-base"><span class="font-semibold">Capital:</span><span>&nbsp;{{ country.capital }}</span></p>
+      <p class="text-sm"><span class="font-semibold">Population:</span><span>&nbsp;{{ country.population }}</span></p>
+      <p class="text-sm"><span class="font-semibold">Region:</span><span>&nbsp;{{ country.region }}</span></p>
+      <p class="text-sm"><span class="font-semibold">Capital:</span><span>&nbsp;{{ country.capital }}</span></p>
     </div>
   </div>
 </template>

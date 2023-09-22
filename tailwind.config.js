@@ -11,6 +11,9 @@ module.exports = {
         'auto': 'repeat(auto-fit, minmax(17rem, 1fr))',
       }
     },
+    fontSize: {
+      'cus': ['0.875rem', '2rem'],
+    }
   },
   plugins: [],
 }

@@ -8,15 +8,12 @@ export const useGlobalStore = defineStore('global', {
     },
     getBorderCountries(borderCountries) {
       if (!borderCountries) return 'N/A'
-      let filteredBorderCountries = []
-      for (let i = 0; i < borderCountries.length; i++) {
-        for (let j = 0; j < this.countries.length; j++) {
-          if (borderCountries[i] === this.countries[j].cca3) {
-            filteredBorderCountries.push(this.countries[j].name.common)
-          }
-        }
-      }
+
+      const filteredBorderCountries = this.countries
+        .filter((country) => borderCountries.includes(country.cca3))
+        .map((country) => country.name.common)
+
       return filteredBorderCountries
-    }
+    },
   },
 })

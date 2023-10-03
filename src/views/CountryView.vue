@@ -8,17 +8,22 @@ import { useRouter, useRoute } from 'vue-router'
 import { ArrowLongLeftIcon } from '@heroicons/vue/24/solid'
 import Container from '@/components/Container.vue'
 
+import { useGlobalStore } from '@/stores/global'
+const global = useGlobalStore()
+
 const router = useRouter()
 const route = useRoute()
 
 const loading = ref(true)
 const countryInfo = ref({})
+const countryBorders = ref([])
 
 const getCountryInfo = async () => {
   try {
     loading.value = true
     const { data } = await api.getCountry(route.params.id)
     countryInfo.value = data[0]
+    getBorderCountries(countryInfo.value)
   } catch (error) {
     console.log(error)
   } finally {
@@ -26,8 +31,9 @@ const getCountryInfo = async () => {
   }
 }
 
-const getBorderCountries = (countries) => {
-  return countries
+const getBorderCountries = (country) => {
+  const borders = global.getBorderCountries(country.borders)
+  countryBorders.value = borders
 }
 
 const formatLanguages = (country) => {
@@ -114,14 +120,12 @@ onMounted(() => {
         <div v-if="countryInfo.borders">
           <h5 class="font-semibold mb-3 text-sm">Border Countries</h5>
           <div class="flex items-center gap-2">
-            <p class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer">
-              France
-            </p>
-            <p class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer">
-              Germany
-            </p>
-            <p class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer">
-              Netherlands
+            <p
+              v-for="country in countryBorders"
+              :key="country"
+              class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer"
+            >
+              {{ country }}
             </p>
           </div>
         </div>

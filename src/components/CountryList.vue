@@ -4,12 +4,14 @@ import CountryCard from '@/components/CountryCard.vue'
 import api from '@/utils/api-services.js';
 import { getCapital } from '@/utils/helpers.js'
 import { ref, onMounted } from 'vue'
-
+import { useGlobalStore } from '@/stores/global'
+const global = useGlobalStore()
 const defaultCountries = ref([])
 
 const getCountries = async () => {
   try {
     const { data } = await api.getAllCountries()
+    global.setAllCountries(data)
 
     defaultCountries.value = data.slice(0, 8).map(country => {
       return {

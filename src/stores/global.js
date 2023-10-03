@@ -7,8 +7,6 @@ export const useGlobalStore = defineStore('global', {
       this.countries = val
     },
     getBorderCountries(borderCountries) {
-      if (!borderCountries) return 'N/A'
-
       const filteredBorderCountries = this.countries
         .filter((country) => borderCountries.includes(country.cca3))
         .map((country) => country.name.common)

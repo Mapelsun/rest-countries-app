@@ -7,14 +7,16 @@ export const useGlobalStore = defineStore('global', {
       this.countries = val
     },
     getCountry(id) {
-      const country = this.countries.find((country) => country.cca2.toLowerCase() === id)
+      const country = this.countries.find(
+        (country) => country.cca2.toLowerCase() === id
+      )
       this.getBorderCountries(country.borders)
       return country
     },
     getBorderCountries(borders) {
       this.borderCountries = this.countries
         .filter((country) => borders?.includes(country.cca3))
-        .map((country) => country.name.common)
+        .map((country) => ({ name: country.name.common, cca2: country.cca2 }))
     },
   },
 })

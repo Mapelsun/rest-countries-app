@@ -1,7 +1,7 @@
 <script setup>
-import { formatNumberWithCommas, getCapital } from '@/utils/helpers.js'
+import { convertToLowerCase, formatNumberWithCommas, getCapital } from '@/utils/helpers.js'
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUpdated } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 
 import { ArrowLongLeftIcon } from '@heroicons/vue/24/solid'
@@ -43,6 +43,10 @@ const formatCurrencies = (country) => {
 onMounted(() => {
   getCountryInfo()
 })
+
+onUpdated(() => {
+  getCountryInfo()
+})
 </script>
 <template>
   <Container>
@@ -55,7 +59,7 @@ onMounted(() => {
     <p v-if="loading">Loading...</p>
     <div v-else class="grid sm:grid-cols-2 sm:items-center">
       <img
-        class="w-full max-w-2xl h-60 md:h-full mb-6 sm:mb-0 bg-red-500"
+        class="w-full max-w-2xl h-60 md:h-full mb-6 sm:mb-0 object-cover"
         :src="countryInfo.flags.svg"
         :alt="countryInfo.flags.alt ?? ''"
       />
@@ -105,14 +109,15 @@ onMounted(() => {
         </div>
         <div v-if="countryInfo.borders">
           <h5 class="font-semibold mb-3 text-sm">Border Countries</h5>
-          <div class="flex items-center gap-2">
-            <p
+          <div class="flex items-center flex-wrap gap-2">
+            <button
               v-for="country in global.borderCountries"
               :key="country"
               class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer"
+              @click="router.push(`/country/${convertToLowerCase(country.cca2)}`)"
             >
-              {{ country }}
-            </p>
+              {{ country.name }}
+            </button>
           </div>
         </div>
       </div>

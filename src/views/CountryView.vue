@@ -56,8 +56,8 @@ onMounted(() => {
     <div v-else class="grid sm:grid-cols-2 sm:items-center">
       <img
         class="w-full max-w-2xl h-60 md:h-full mb-6 sm:mb-0 bg-red-500"
-        src=""
-        alt=""
+        :src="countryInfo.flags.svg"
+        :alt="countryInfo.flags.alt"
       />
       <div class="sm:pl-5 sm:mt-5 md:pl-10 lg:pl-20">
         <h2 class="text-2xl font-bold mb-4">{{ countryInfo.name.common }}</h2>

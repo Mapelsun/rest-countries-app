@@ -8,36 +8,30 @@ import { useGlobalStore } from '@/stores/global'
 const global = useGlobalStore()
 const defaultCountries = ref([])
 
+const setLandingCountries = (data) => {
+  defaultCountries.value = data.map((country) => {
+    return {
+      flag: country.flags.svg,
+      flagAlt: country.flags.alt || '',
+      name: country.name.common,
+      population: country.population,
+      region: country.region,
+      code: country.cca2,
+      capital: getCapital(country),
+    }
+  })
+}
+
 const getCountries = async () => {
   try {
     let data
     if (global.countries.length > 0) {
       data = global.countries
-      defaultCountries.value = data.slice(0, 8).map((country) => {
-        return {
-          flag: country.flags.svg,
-          flagAlt: country.flags.alt || '',
-          name: country.name.common,
-          population: country.population,
-          region: country.region,
-          code: country.cca2,
-          capital: getCapital(country),
-        }
-      })
+      setLandingCountries(data)
     } else {
       const { data } = await api.getAllCountries()
       global.setAllCountries(data)
-      defaultCountries.value = data.slice(0, 8).map((country) => {
-        return {
-          flag: country.flags.svg,
-          flagAlt: country.flags.alt || '',
-          name: country.name.common,
-          population: country.population,
-          region: country.region,
-          code: country.cca2,
-          capital: getCapital(country),
-        }
-      })
+      setLandingCountries(data)
     }
   } catch (error) {
     console.log(error)

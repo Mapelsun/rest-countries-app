@@ -1,5 +1,4 @@
 <script setup>
-import api from '@/utils/api-services.js'
 import { formatNumberWithCommas, getCapital } from '@/utils/helpers.js'
 
 import { ref, onMounted } from 'vue'
@@ -15,25 +14,12 @@ const router = useRouter()
 const route = useRoute()
 
 const loading = ref(true)
-const countryInfo = ref({})
-const countryBorders = ref([])
+const countryInfo = ref(global.country)
 
 const getCountryInfo = async () => {
-  try {
-    loading.value = true
-    const { data } = await api.getCountry(route.params.id)
-    countryInfo.value = data[0]
-    getBorderCountries(countryInfo.value)
-  } catch (error) {
-    console.log(error)
-  } finally {
-    loading.value = false
-  }
-}
-
-const getBorderCountries = (country) => {
-  const borders = global.getBorderCountries(country.borders)
-  countryBorders.value = borders
+  loading.value = true
+  countryInfo.value = global.getCountry(route.params.id)
+  loading.value = false
 }
 
 const formatLanguages = (country) => {
@@ -121,7 +107,7 @@ onMounted(() => {
           <h5 class="font-semibold mb-3 text-sm">Border Countries</h5>
           <div class="flex items-center gap-2">
             <p
-              v-for="country in countryBorders"
+              v-for="country in global.borderCountries"
               :key="country"
               class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer"
             >

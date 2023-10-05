@@ -1,17 +1,21 @@
 import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', {
-  state: () => ({ countries: [] }),
+  state: () => ({ countries: [], borderCountries: [] }),
   actions: {
     setAllCountries(val) {
       this.countries = val
     },
-    getBorderCountries(borderCountries) {
-      const filteredBorderCountries = this.countries
-        .filter((country) => borderCountries.includes(country.cca3))
+    getCountry(id) {
+      const country = this.countries.find((country) => country.cca2.toLowerCase() === id)
+      this.getBorderCountries(country.borders)
+      return country
+    },
+    getBorderCountries(borders) {
+      this.borderCountries = this.countries
+        .filter((country) => borders?.includes(country.cca3))
         .map((country) => country.name.common)
-
-      return filteredBorderCountries
     },
   },
 })
+

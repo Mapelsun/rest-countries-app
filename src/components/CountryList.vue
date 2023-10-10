@@ -8,11 +8,13 @@ const global = useGlobalStore()
 const defaultCountries = ref([])
 
 const getCountries = async () => {
+  global.toggleLoading(true)
   try {
     let data
     if (global.countries.length > 0) {
       data = global.countries
       defaultCountries.value = data
+      global.setRegions()
     } else {
       const { data } = await api.getAllCountries()
       global.setAllCountries(data)
@@ -20,6 +22,8 @@ const getCountries = async () => {
     }
   } catch (error) {
     console.log(error)
+  } finally {
+    global.toggleLoading(false)
   }
 }
 

@@ -4,6 +4,7 @@ export const useGlobalStore = defineStore('global', {
   state: () => ({
     loading: false,
     countries: [],
+    countriesByRegion: [],
     borderCountries: [],
     regions: [],
   }),
@@ -36,7 +37,7 @@ export const useGlobalStore = defineStore('global', {
       this.regions = regions.sort()
     },
     filterRegions(region) {
-      return this.countries.filter((country) => country.region === region)
+      this.countriesByRegion = this.countries.filter((country) => country.region === region)
     },
   },
 })

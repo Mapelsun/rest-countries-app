@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue'
 import { ChevronDownIcon } from '@heroicons/vue/24/solid'
+import { useGlobalStore } from '@/stores/global'
+
 const selected = ref('')
 const showDropdown = ref(false)
-import { useGlobalStore } from '@/stores/global'
 const global = useGlobalStore()
 
 const toggleOptions = () => {
@@ -12,6 +13,7 @@ const toggleOptions = () => {
 
 const setSelected = (region) => {
   selected.value = region
+  global.filterRegions(region)
   showDropdown.value = false
 }
 </script>
@@ -22,7 +24,7 @@ const setSelected = (region) => {
       class="flex justify-between gap-5 px-5 py-4 rounded-md shadow-md w-60 bg-white"
       @click="toggleOptions"
     >
-      <span class="text-sm text-gray-400">Filter by Region</span>
+      <span class="text-sm">Filter by Region</span>
       <ChevronDownIcon class="w-4 text-gray-500" />
     </div>
     <div

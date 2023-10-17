@@ -2,9 +2,12 @@
 import Container from '@/components/Container.vue'
 import CountryCard from '@/components/CountryCard.vue'
 import api from '@/utils/api-services.js'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+
 import { useGlobalStore } from '@/stores/global'
 const global = useGlobalStore()
+const { countriesByRegion } = storeToRefs(global)
 const defaultCountries = ref([])
 
 const getCountries = async () => {
@@ -26,6 +29,16 @@ const getCountries = async () => {
     global.toggleLoading(false)
   }
 }
+
+watch(
+  countriesByRegion,
+  (newVal) => {
+    if (newVal.length > 0) {
+      defaultCountries.value = newVal
+    }
+  },
+  { immediate: true }
+)
 
 onMounted(() => {
   getCountries()

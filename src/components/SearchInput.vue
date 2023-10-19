@@ -1,13 +1,30 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 const queryTxt = ref('')
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
+import { useGlobalStore } from '@/stores/global'
+const global = useGlobalStore()
+
+watch(
+  queryTxt,
+  (newVal) => {
+    if (newVal !== '') {
+      global.filterByQuery(newVal)
+    }
+  },
+  { immediate: true }
+)
 </script>
 <template>
   <div class="flex items-center gap-5 px-8 py-4 rounded-md shadow-md bg-white">
     <MagnifyingGlassIcon class="w-6 text-gray-500" />
-    <input v-model="queryTxt" type="text" placeholder="Search for a country..."
-      class="outline-none w-full bg-inherit text-sm">
+    <input
+      v-model="queryTxt"
+      type="text"
+      placeholder="Search for a country..."
+      class="outline-none w-full bg-inherit text-sm"
+    />
   </div>
 </template>
+

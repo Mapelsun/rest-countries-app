@@ -24,7 +24,7 @@ const setSelected = (region) => {
       class="flex justify-between gap-5 px-5 py-4 rounded-md shadow-md w-60 bg-white"
       @click="toggleOptions"
     >
-      <span class="text-sm">Filter by Region</span>
+      <span class="text-sm">{{ selected || 'Filter by Region' }}</span>
       <ChevronDownIcon class="w-4 text-gray-500" />
     </div>
     <div

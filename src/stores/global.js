@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     loading: false,
+    filteredCountries: [],
     countries: [],
     countriesByRegion: [],
     borderCountries: [],
@@ -45,6 +46,15 @@ export const useGlobalStore = defineStore('global', {
         this.countriesByRegion = this.countries.filter(
           (country) => country.region === region
         )
+      }
+    },
+    filterByQuery(query) {
+      if (query !== '') {
+        this.filteredCountries = this.countries.filter((country) =>
+          country.name.common.toLowerCase().includes(query.toLowerCase())
+        )
+      } else {
+        this.filteredCountries = this.countries
       }
     },
   },

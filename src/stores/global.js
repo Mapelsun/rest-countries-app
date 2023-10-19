@@ -34,15 +34,9 @@ export const useGlobalStore = defineStore('global', {
           regions.push(obj.region)
         }
       })
-      this.regions = regions.sort(function (a, b) {
-        if (a === 'All') {
-          return -1
-        } else if (b === 'All') {
-          return 1
-        } else {
-          return a.localeCompare(b)
-        }
-      })
+      this.regions = regions.sort((a, b) =>
+        a === 'All' ? -1 : b === 'All' ? 1 : a.localeCompare(b)
+      )
     },
     filterRegions(region) {
       this.countriesByRegion = this.countries.filter(

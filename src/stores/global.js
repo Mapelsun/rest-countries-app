@@ -39,9 +39,13 @@ export const useGlobalStore = defineStore('global', {
       )
     },
     filterRegions(region) {
-      this.countriesByRegion = this.countries.filter(
-        (country) => country.region === region
-      )
+      if (region === 'All') {
+        this.countriesByRegion = this.countries
+      } else {
+        this.countriesByRegion = this.countries.filter(
+          (country) => country.region === region
+        )
+      }
     },
   },
 })

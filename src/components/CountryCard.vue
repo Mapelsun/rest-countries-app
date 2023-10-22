@@ -15,7 +15,7 @@ const props = defineProps({
 <template>
   <div
     @click="router.push(`/country/${convertToLowerCase(country.cca2)}`)"
-    class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer"
+    class="flex flex-col rounded shadow-lg hover:shadow-2xl transition overflow-hidden cursor-pointer max-w-[300px]"
   >
     <img
       :src="country.flags.svg"

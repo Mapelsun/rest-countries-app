@@ -11,7 +11,7 @@ const router = useRouter()
     <container>
       <div class="flex justify-between items-center">
         <h3
-          class="font-bold text-base cursor-pointer"
+          class="font-bold text-base sm:text-[18px] cursor-pointer"
           @click="router.push('/')"
         >
           Where in the world?

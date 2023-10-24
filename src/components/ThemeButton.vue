@@ -36,9 +36,11 @@ onMounted(() => setTheme(userTheme.value))
 </script>
 
 <template>
-  <div class="flex items-center gap-2">
-    <MoonIcon class="w-4 cursor-pointer" @click="toggleTheme" />
-    <p>{{ userTheme === 'dark' ? 'Dark Mode' : 'Light Mode' }}</p>
+  <div class="flex items-center gap-2 cursor-pointer" @click="toggleTheme">
+    <MoonIcon class="w-4" />
+    <p class="font-semibold">
+      {{ userTheme === 'dark' ? 'Light Mode' : 'Dark Mode' }}
+    </p>
   </div>
 </template>
 

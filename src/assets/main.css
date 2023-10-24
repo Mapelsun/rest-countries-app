@@ -4,46 +4,33 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define styles for the default root window element */
 :root {
-  --color-background-light: hsl(0, 0%, 98%);
-  --color-elements-light: hsl(0, 0%, 100%);
-  --color-text-light: hsl(200, 15%, 8%);
-  --color-input-light: hsl(0, 0%, 52%);
-  --color-background-dark: hsl(207, 26%, 17%);
-  --color-elements-dark: hsl(209, 23%, 22%);
-  --color-text-dark: hsl(0, 0%, 100%);
+  --background-color: hsl(0, 0%, 98%);
+  --text-color: hsl(200, 15%, 8%);
+  --accent-color: hsl(0, 0%, 100%);
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--color-background-light);
-  --color-text: var(--color-text-light);
-  --color-elements: var(--color-elements-light);
+/* Define styles for the root window with dark - mode preference */
+:root.dark {
+  --background-color: hsl(207, 26%, 17%);
+  --text-color: hsl(0, 0%, 100%);
+  --accent-color: hsl(209, 23%, 22%);
 }
-
-[data-theme='dark'] {
-    --color-background: var(--color-background-dark);
-    --color-text: var(--color-text-dark);
-    --color-elements: var(--color-elements-dark);
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--color-background-dark);
-    --color-text: var(--color-text-dark);
-    --color-elements: var(--color-elements-dark);
-  }
-} */
 
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition: color 0.5s, background-color 0.5s;
-  line-height: 1.6;
+  color: var(--text-color);
+  background: var(--background-color);
+  transition: color 0.5s, background-color 0.2s;
   font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.6;
   font-size: 14px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3, p {
+  color: var(--text-color);
 }

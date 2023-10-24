@@ -17,13 +17,13 @@ watch(
 )
 </script>
 <template>
-  <div class="flex items-center gap-5 px-8 py-4 rounded-md shadow-md bg-white">
-    <MagnifyingGlassIcon class="w-6 text-gray-500" />
+  <div class="flex items-center gap-5 px-8 py-4 rounded-md shadow-md bg-[--accent-color]">
+    <MagnifyingGlassIcon class="w-6 text-[--text-color]" />
     <input
       v-model="queryTxt"
       type="text"
       placeholder="Search for a country..."
-      class="outline-none w-full bg-inherit text-sm"
+      class="outline-none w-full bg-inherit text-sm text-[--text-color]"
     />
   </div>
 </template>

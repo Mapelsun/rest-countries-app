@@ -1,5 +1,9 @@
 <script setup>
-import { convertToLowerCase, formatNumberWithCommas, getCapital } from '@/utils/helpers.js'
+import {
+  convertToLowerCase,
+  formatNumberWithCommas,
+  getCapital,
+} from '@/utils/helpers.js'
 
 import { ref, onMounted, onUpdated } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -51,7 +55,7 @@ onUpdated(() => {
 <template>
   <Container>
     <button
-      class="mt-5 mb-14 flex items-center cursor-pointer gap-1.5 py-1 px-4 border rounded-sm shadow-lg"
+      class="mt-5 mb-14 flex items-center cursor-pointer gap-1.5 py-1 px-4 bg-[--accent-color] rounded-sm shadow-lg"
       @click="router.back()"
     >
       <ArrowLongLeftIcon class="w-4" /><span>Back</span>
@@ -64,7 +68,9 @@ onUpdated(() => {
         :alt="countryInfo.flags.alt ?? ''"
       />
       <div class="sm:pl-5 sm:mt-5 md:pl-10 lg:pl-20">
-        <h2 class="text-2xl font-bold mb-4">{{ countryInfo.name.common }}</h2>
+        <h2 class="text-3xl text-[30px] font-bold mb-4">
+          {{ countryInfo.name.common }}
+        </h2>
         <div class="md:flex md:gap-10 lg:gap-16">
           <div class="mb-8">
             <p class="text-cus">
@@ -113,8 +119,10 @@ onUpdated(() => {
             <button
               v-for="country in global.borderCountries"
               :key="country"
-              class="py-1 px-4 border rounded-sm shadow-sm cursor-pointer"
-              @click="router.push(`/country/${convertToLowerCase(country.cca2)}`)"
+              class="py-1 px-4 bg-[--accent-color] rounded-sm shadow-sm cursor-pointer"
+              @click="
+                router.push(`/country/${convertToLowerCase(country.cca2)}`)
+              "
             >
               {{ country.name }}
             </button>

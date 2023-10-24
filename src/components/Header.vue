@@ -7,7 +7,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <header class="shadow-sm sticky top-0 bg-[--accent-color]">
+  <header class="shadow-sm sticky top-0 bg-[--accent-color] z-50">
     <container>
       <div class="flex justify-between items-center">
         <h3

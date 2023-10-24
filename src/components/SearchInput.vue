@@ -17,7 +17,7 @@ watch(
 )
 </script>
 <template>
-  <div class="flex items-center gap-5 px-8 py-4 rounded-md shadow-md bg-[--accent-color]">
+  <div class="flex items-center gap-5 px-8 py-4 rounded-md shadow-md bg-[--accent-color] w-full md:w-1/3">
     <MagnifyingGlassIcon class="w-6 text-[--text-color]" />
     <input
       v-model="queryTxt"
